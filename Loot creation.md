@@ -309,6 +309,9 @@ KLS
 
 /////////////////////////////////////////////////////////
 
+//////////
+Link below perfectly guides in disabling lootdrop entries
 
+[Disabling Lootdrop Entries](https://eqemu.gitbook.io/server/categories/how-to-guides/operation/disabling-lootdrops)
 
 
