@@ -1,14 +1,19 @@
 #Loot
 
-Loot is dealt in five different table...
+Loot is dealt in five different tables...
 
 global_loot
+
 lootdrop
+
 lootdrop_entries
+
 loottable
+
 loottable_entries
 
-
+Global Loot
+    > global_loot is just that. Loot that is dropped globaly by all npcs. There are
 
 ///Loottable
 
