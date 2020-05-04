@@ -1,0 +1,31 @@
+GloatToday at 3:18 PM
+what VM are you using? i think some will use actual hardware and others will use virtual hardware. i think you can setup a drag and drop from host to VM, i typically setup a fileshare on the VM (samba or windows share) than drag and drop via network to the VM.
+
+
+[
+3:20 PM
+] 
+I simply use Hyper-v or virtual box, I’m there’s better suited ones. someone had mentioned a VMware that used hardware rather than virtual but I can’t remember the name. are you going to be using linux in the vm?
+
+
+
+darthal_azrakrebornToday at 4:14 PM
+If you have windows pro, Hyper-v is free and seems quite responsive. It might be more difficult to set up than VMware or virtual box though
+
+
+[
+4:19 PM
+] 
+The vm should use your hardware and you should be able to partition the virtual drive that you created for the vm. I that you should be able to run a vm within a vm
+
+
+[
+4:25 PM
+] 
+If you do want to run a vm inside a virtual machine, you’ll likely need something other than hyper-v unless you’re just creating windows vm lol. I’ve had better luck using virtualization with Intel chips than amd but I can usually get the amd chips working
+
+
+[
+4:29 PM
+] 
+You will not be able to access drives outside of the virtual machine without an intermediary. One of things that makes vms useful is that through virtualization, they have created a virtual drive, memory etc where the memory contents can be destroyed but the machine that spawned it won’t be affected

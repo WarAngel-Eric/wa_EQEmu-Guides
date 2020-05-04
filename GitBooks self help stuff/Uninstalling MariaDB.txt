@@ -1,0 +1,15 @@
+////////////////
+//WarAngel
+//30Apr2020
+//Windows 10
+////////////////
+//Uninstalling MiriaDB by traditional means is VERY ineffective. What happens is if you uninstall traditionaly, and then reinstall. You get issues with old registries and pathways that for whatever reason I do not know, tied to the old install. And thus there is a disconnect to the new install. You have to do a thourough clean removal.
+
+
+. Turn off MariaDB or MySQLin the Task Manager background process
+. Uninstall per Control Panel
+. Search and remove left over folders and files in the directory
+. Run a registry cleaner if possible
+. Remove all traces in the registry
+. Remove the pathway in System Path enviornment variable
+. 

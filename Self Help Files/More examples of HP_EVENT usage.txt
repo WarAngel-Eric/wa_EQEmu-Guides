@@ -1,0 +1,156 @@
+//////////////////////////////
+
+function event_hp(e)
+    if (e.inc_hp_event == 80) and banish == false then -- If I've regened to 80.
+        e.self:SetAppearance(0); -- Stand myself up
+        e.self:TempName("Tirranun`s Blazing Body "); -- Change my name
+        e.self:CastSpell(6540, e.self:GetID()); -- cast Form of Lava
+        eq.set_timer("Form", 25000); -- Maintain this buff every 25 seconds.
+        eq.set_timer("Adds", 15000); -- Set adds to spawn faster, every 15 seconds now.
+        eq.set_next_inc_hp_event(90); -- do something at 90%
+    elseif (e.inc_hp_event == 90) and banish == false then -- If I've regened to 90.
+        e.self:TempName("Tirranun the Ancient Protector"); -- Change my name
+        e.self:ModifyNPCStat("min_hit", tostring(tir_min_hit)); -- modify my min hit.
+        e.self:ModifyNPCStat("max_hit", tostring(tir_max_hit)); -- modify my max hit.
+        e.self:ModifyNPCStat("max_hp", tostring(e.self:GetMaxHP() + 800000)); -- add 800,000HP to my max pool.
+        e.self:SetHP(e.self:GetMaxHP()); -- Heal myself to 100.
+        e.self:ModifyNPCStat("hp_regen", "6250"); -- reset my regen back to default.
+        e.self:SetSpecialAbility(SpecialAbility.immune_aggro, 0);
+        e.self:SetSpecialAbility(SpecialAbility.immune_aggro_on, 0);
+        e.self:SetSpecialAbility(SpecialAbility.no_harm_from_client, 0); -- allow everyone to agro, and allow myself to agro.
+        e.self:SetSpecialAbility(SpecialAbility.immune_magic, 0);
+        e.self:SetSpecialAbility(SpecialAbility.summon, 1);
+        e.self:AddToHateList(e.self:GetTarget(),1); 
+        eq.set_timer("Adds", 10000); -- set add timers to max timer of 10sec.
+        eq.set_timer("Aoe_two", 45000); -- start my new aoe timer.
+        can_die=true; -- let myself know I can die properly now.
+        phaseone=false;
+    end
+end
+
+
+
+
+//////////////////////////////////
+
+
+local phase = 1;
+
+function event_spawn(e)
+    phase = 1;
+    eq.set_next_hp_event(76);
+end
+
+function event_hp(e)
+    if (e.hp_event == 76) then
+        phase = 2;
+        e.self:Emote(" roars in pain as his red head explodes in a shower of flaming ethereal energy!");
+        -- remove red head
+        e.self:SendIllusionPacket({race=304,gender=2,texture=0,helmtexture=1});
+        DispellBuffs(e);
+        eq.set_next_hp_event(51);
+    elseif (e.hp_event == 51) then
+        phase = 3;
+        e.self:Emote(" roars in pain as his blue head explodes into pure ethereal energy!");
+        -- remove blue head
+        e.self:SendIllusionPacket({race=304,gender=2,texture=0,helmtexture=2});
+        DispellBuffs(e)
+        eq.set_next_hp_event(26);
+    elseif (e.hp_event == 26) then
+        phase = 4;
+        e.self:Emote(" shakes the cavern with a bellow of pain as the white head explodes into a swirling vortex of ethereal energy!");
+        -- remove white head
+        e.self:SendIllusionPacket({race=304,gender=2,texture=0,helmtexture=3});
+        DispellBuffs(e)
+    end
+end
+
+
+///////////////////////////////////////
+
+setnextinchpevent
+      Parameter(s):
+      at_mob_percentage (int)
+      Usage:
+      Used to set an HP event (to trigger EVENT_HP). When the NPC's health increases to reach this threshold, the event will be triggered.
+
+
+
+/////////////////////////////////
+
+    if (IsNPC() && (GetNextHPEvent() > 0))
+    {
+        if (ds->hp < GetNextHPEvent())
+        {
+            char buf[10];
+            snprintf(buf, 9, "%i", GetNextHPEvent());
+            buf[9] = '\0';
+            SetNextHPEvent(-1);
+            parse->EventNPC(EVENT_HP, CastToNPC(), nullptr, buf, 0);
+        }
+    }
+
+    if (IsNPC() && (GetNextIncHPEvent() > 0))
+    {
+        if (ds->hp > GetNextIncHPEvent())
+        {
+            char buf[10];
+            snprintf(buf, 9, "%i", GetNextIncHPEvent());
+            buf[9] = '\0';
+            SetNextIncHPEvent(-1);
+            parse->EventNPC(EVENT_HP, CastToNPC(), nullptr, buf, 1);
+        }
+    }
+
+/////////////////////////////////
+
+#:: Create a scalar variable to store a state
+my $HPThreshold;
+
+sub EVENT_SPAWN {
+    #:: Reset variable on spawn
+    $HPThreshold = 0;
+    #:: Set the next hp event for 98 percent health
+    quest::setnexthpevent(98);
+}
+
+sub EVENT_HP {
+    if ($hpevent == 98) {
+        if ($HPThreshold == 0) {
+            #:: Set the variable to '1'
+            $HPThreshold = 1;
+            #:: .............spawn whatever
+            #:: Set the next hp event for 95 percent health
+            quest::setnexthpevent(95);
+        }
+    }
+    elsif ($hpevent == 95) {
+        if ($HPThreshold == 1) {
+            #:: Set the variable to '2'
+            $HPThreshold = 2;
+            #:: .............spawn whatever
+            #:: Set the next hp event for 93 percent health
+            quest::setnexthpevent(93);
+        }
+    }
+    #:: Etc.
+}
+
+///////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

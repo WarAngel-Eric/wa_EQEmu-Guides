@@ -1,0 +1,291 @@
+UPDATE `variables` SET `hotfix_name` = '';
+
+UPDATE `variables` SET `value` = '' WHERE `varname` LIKE 'hotfix_name';
+
+
+
+
+
+
+
+
+
+
+
+UleatToday at 8:20 PM
+did you test the server before starting to make changes to it?
+
+
+
+MarxisToday at 8:21 PM
+as in when I first installed it?
+
+
+
+UleatToday at 8:21 PM
+yes
+
+MarxisToday at 8:21 PM
+I did not
+
+WarAngelToday at 8:23 PM
+Ooo ooo. Does that mean I get to take you through a fresh install. And show ya how to set up multiple DB and servers? bouncing around
+[
+8:23 PM
+] 
+Sorry, calming down.
+
+MarxisToday at 8:24 PM
+LOL
+[
+8:24 PM
+] 
+it sounds like it.....ughhhhh
+
+WarAngelToday at 8:25 PM
+Hear is the good news. We learned a TON.... Brilliant!
+
+UleatToday at 8:25 PM
+are you getting any errors in your zone log files?
+
+MarxisToday at 8:25 PM
+yeah, same, but, I still dont get the source
+[
+8:25 PM
+] 
+as in the world server?
+
+UleatToday at 8:25 PM
+zone server
+[
+8:26 PM
+] 
+you'll have to check the actual logs
+[
+8:26 PM
+] 
+they won't show up in the zone manager window
+
+WarAngelToday at 8:26 PM
+
+
+
+
+[
+8:27 PM
+] 
+Forgot again to check for nudies in background...
+
+
+
+
+MarxisToday at 8:27 PM
+ok, are they deleted and dropped every restart?
+
+
+
+UleatToday at 8:27 PM
+zone, yes
+
+
+
+MarxisToday at 8:30 PM
+kk
+
+
+[
+8:30 PM
+] 
+ill do it again and see if an error pops
+
+
+[
+8:35 PM
+] 
+
+zone_17360.log
+4.07 KB
+
+
+
+[
+8:36 PM
+] 
+its the only one I see, I was in nro, but only commons popped up
+
+
+
+UleatToday at 8:40 PM
+no zone logs with a zone short name and pid attached?
+
+
+
+WarAngelToday at 8:42 PM
+Like this?
+
+
+
+
+
+MarxisToday at 8:45 PM
+ahh only ecommons
+
+
+
+UleatToday at 8:46 PM
+did you do anything to change zone ids?
+
+
+
+MarxisToday at 8:48 PM
+no
+
+
+[
+8:48 PM
+] 
+I did no
+
+
+[
+8:48 PM
+] 
+not
+
+
+[
+8:48 PM
+] 
+zone lines yes
+
+
+[
+8:52 PM
+] 
+yeah sorry
+
+
+[
+8:52 PM
+] 
+1 sec it popped up
+
+
+
+new
+[
+8:54 PM
+] 
+[05-02-2020 :: 21:52:07] [Zone Server] Time Broadcast Packet: EQTime [02:47 am]
+[05-02-2020 :: 21:53:08] [Zone Server] Dropping client: Process=false, ip=192.168.1.75 port=55285
+[05-02-2020 :: 21:54:12] [Zone Server] Dropping client: Process=false, ip=192.168.1.75 port=3009
+
+
+[
+8:54 PM
+] 
+thats all it shows
+
+
+[
+8:54 PM
+] 
+after i clicked on it
+
+
+
+UleatToday at 8:55 PM
+if you let the client stay .. does it eventually say you were disconnected?
+
+
+[
+8:56 PM
+] 
+you can hit F11 to see if the ping meter drops
+
+
+[
+8:57 PM
+] 
+a disconnect occurs at around 66%
+
+
+
+MarxisToday at 8:58 PM
+let me see
+
+
+
+
+
+
+thats all it shows
+
+
+[
+8:54 PM
+] 
+after i clicked on it
+
+
+
+UleatToday at 8:55 PM
+if you let the client stay .. does it eventually say you were disconnected?
+
+
+[
+8:56 PM
+] 
+you can hit F11 to see if the ping meter drops
+
+
+[
+8:57 PM
+] 
+a disconnect occurs at around 66%
+
+
+
+MarxisToday at 8:58 PM
+let me see
+
+
+
+UleatToday at 9:00 PM
+yeah, if the server crashes, that meter will start to tic down noticeably
+
+
+[
+9:00 PM
+] 
+and would explain the no return packet
+
+
+[
+9:00 PM
+] 
+check the other directory in logs called crashes
+
+
+[
+9:00 PM
+] 
+and see if you have any there
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
